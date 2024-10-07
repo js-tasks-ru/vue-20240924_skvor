@@ -15,10 +15,12 @@ export default defineComponent({
     },
   },
 
+  emits: ['remove-email-by-index'],
+
   template: `
     <li :class="{ marked }">
       {{ email }}
-      <button type="button" aria-label="Удалить" @click.stop>❌</button>
+      <button type="button" aria-label="Удалить" @click.stop=$emit('remove-email-by-index')>❌</button>
     </li>
   `,
 })

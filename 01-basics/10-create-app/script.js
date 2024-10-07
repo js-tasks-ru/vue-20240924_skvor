@@ -1,9 +1,22 @@
 import { defineComponent, createApp } from 'vue'
 
-const options = {
-  dateStyle:'long'
-};
-createApp({
-  name: 'todayDate',
-  template: 'Сегодня ' + new Date().toLocaleDateString(navigator.language, options),
-}).mount('#app')
+
+
+const TodayDateApp = defineComponent({
+  name: 'TodayDateApp',
+
+  setup() {
+    const options = {
+      dateStyle:'long'
+    };
+    const todayDate = 'Сегодня ' + new Date().toLocaleDateString(navigator.language, options)
+
+    return { todayDate, };
+  },
+
+  template: `
+     <div>{{ todayDate }}</div>
+  `,
+})
+
+createApp(TodayDateApp).mount('#app')
