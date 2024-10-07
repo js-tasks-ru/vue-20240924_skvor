@@ -17,10 +17,20 @@ export default defineComponent({
 
   emits: ['remove'],
 
+  setup(props, { emit }) {
+    function remove() {
+      emit('remove');
+    }
+
+    return {
+      remove,
+    }
+  },
+
   template: `
     <li :class="{ marked }">
       {{ email }}
-      <button type="button" aria-label="Удалить" @click.stop=$emit('remove')>❌</button>
+      <button type="button" aria-label="Удалить" @click.stop="remove">❌</button>
     </li>
   `,
 })
